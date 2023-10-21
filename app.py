@@ -1,12 +1,19 @@
 from flask import Flask, render_template, request, url_for, redirect
 from email.mime.text import MIMEText
 import smtplib
+from datetime import datetime
 from email.message import EmailMessage
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html',name='John',age=20,occupation='Student')
+    start_date = datetime(2022,6,2) # start date of working as a Full time employee
+    current_date = datetime.now() #current date of working 
+    difference  = current_date - start_date
+    difference_in_years = (difference.days + difference.seconds/86400)/365.2425
+    total_exp=round(difference_in_years,1)
+
+    return render_template('index.html',total_exp=total_exp,age=20,occupation='Student')
 
 @app.route("/sendemail/", methods=['POST'])
 def sendmail():
@@ -18,7 +25,7 @@ def sendmail():
 
         your_name="Varigonda Sai Nirmal Vignu"
         your_email="nirmalvignu@gmail.com"
-        your_password="jqqkigewkjqfagev"
+        your_password="tysr rbjm iryf rmra"
 
         # Logging in to our email account
         server = smtplib.SMTP('smtp.gmail.com', 587)

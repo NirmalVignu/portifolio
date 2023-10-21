@@ -5292,4 +5292,12 @@
   /* Common Style */
   .section {
     padding-bottom: 0; }
+
+    .fa-font:before {
+      font-family: roboto;
+      color: #429bf4;
+      font-size: 1.2em;
+      content: "K";  
+      color: white;
+    }
   
